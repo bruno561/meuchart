@@ -1,1 +1,3 @@
-bebida: café
+favorita:
+  bebida: café
+  comida: pizza
