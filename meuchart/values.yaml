@@ -1,3 +1,6 @@
+configmap:
+  enabled: true
 favorita:
   bebida: café
   comida: pizza
+  temperatura: morna
