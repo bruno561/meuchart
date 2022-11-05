@@ -1,17 +1,12 @@
-{{ if eq .Values.configmap.enabled true }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
 data:
   myvalue: "Hello World"
-  bebida: {{ .Values.favorita.bebida }}
-  comida: {{ .Values.favorita.comida }}
-  {{- if and (eq .Values.favorita.bebida "café") (eq .Values.favorita.temperatura "quente") }}
-  caneca: "Sim, com protetor" 
-  {{ else if and (eq .Values.favorita.bebida "café") (eq .Values.favorita.temperatura "frio") }}
-  caneca: "Sim, sem protetor"
-  {{ else }}
-  caneca: "Não"
+  {{- with .Values.favorita }}
+  bebida: {{ .bebida }}
+  comida: {{ .comida }}
+  release: {{ $.Release.Name }}
   {{- end }}
-  {{- end }}
+  caneca: {{ .Values.favorita.caneca }}
