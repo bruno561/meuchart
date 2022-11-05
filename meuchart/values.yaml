@@ -1,5 +1,8 @@
 favorita:
   bebida: café
   comida: pizza
-  caneca: Sim
-  #temperatura: morna
+ingredientesPizza:
+  - nome: farinha
+    local: massa
+  - nome: molho
+    local: cobertura
