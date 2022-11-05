@@ -4,9 +4,10 @@ metadata:
   name: {{ .Release.Name }}-configmap
 data:
   myvalue: "Hello World"
-  {{- with .Values.favorita }}
-  bebida: {{ .bebida }}
-  comida: {{ .comida }}
-  release: {{ $.Release.Name }}
-  {{- end }}
-  caneca: {{ .Values.favorita.caneca }}
+  bebida: {{ .Values.favorita.bebida }}
+  comida: {{ .Values.favorita.comida }}
+  ingredientes: |-
+    {{- range .Values.ingredientesPizza }}
+    - nome: {{ .nome | quote }}
+      local: {{ .local | quote }}
+    {{- end }}
