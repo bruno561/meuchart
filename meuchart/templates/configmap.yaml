@@ -3,11 +3,6 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
 data:
-  myvalue: "Hello World"
-  bebida: {{ .Values.favorita.bebida }}
-  comida: {{ .Values.favorita.comida }}
-  ingredientes: |-
-    {{- range .Values.ingredientesPizza }}
-    - nome: {{ .nome | quote }}
-      local: {{ .local | quote }}
-    {{- end }}
+  {{- if (lookup "v1" "Service" "ingress-nginx" "ingress-nginx-controller")}}
+  lookup: "Serviço existe"
+  {{- end }}
